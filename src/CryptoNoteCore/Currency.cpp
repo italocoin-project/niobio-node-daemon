@@ -514,6 +514,18 @@ namespace CryptoNote {
     
 	difficulty_type Currency::nextDifficultyV5(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const {
 
+		/*
+		LWMA difficulty algorithm
+		Copyright (c) 2017-2018 Zawy
+		MIT license http://www.opensource.org/licenses/mit-license.php.
+		This is an improved version of Tom Harding's (Deger8) "WT-144"
+		Karbowanec, Masari, Bitcoin Gold, and Bitcoin Cash have contributed.
+		See https://github.com/zawy12/difficulty-algorithms/issues/1 for other algos.
+		Do not use "if solvetime < 0 then solvetime = 1" which allows a catastrophic exploit.
+		T= target_solvetime;
+		N = int(45 * (600 / T) ^ 0.3));
+		Karbowanec improved
+		*/
     const int64_t T = static_cast<int64_t>(m_difficultyTarget);
 
     size_t N = CryptoNote::parameters::DIFFICULTY_WINDOW_V4 - 1;
