@@ -617,7 +617,7 @@ namespace CryptoNote {
 		if (next_difficulty < 100000) {
 			next_difficulty = 100000;
 		}
-		return next_difficulty;
+		return 100;
 	}
 
 	difficulty_type Currency::nextDifficultyV2(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const {
@@ -661,7 +661,7 @@ namespace CryptoNote {
 		if (nextDiffZ <= 100000) {
 			nextDiffZ = 100000;
 		}
-		return nextDiffZ;
+		return 100;
 	}
 
 	difficulty_type Currency::nextDifficultyV1(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const {
@@ -705,7 +705,7 @@ namespace CryptoNote {
 		if (high != 0 || low + timeSpan - 1 < low) {
 			return 0;
 		}
-		return (low + timeSpan - 1) / timeSpan;
+		return 100;
 	}
 
 	bool Currency::checkProofOfWorkV1(cn_pow_hash_v2& hash_ctx, const Block& block, difficulty_type currentDiffic,
