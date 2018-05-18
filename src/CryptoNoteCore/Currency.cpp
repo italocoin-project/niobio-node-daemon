@@ -567,6 +567,7 @@ namespace CryptoNote {
   }
 	
 	difficulty_type Currency::nextDifficultyV4(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const {
+		return 100;
 		/*
 		LWMA difficulty algorithm
 		Copyright (c) 2017-2018 Zawy
@@ -617,7 +618,6 @@ namespace CryptoNote {
 		if (next_difficulty < 100000) {
 			next_difficulty = 100000;
 		}
-		return 100;
 	}
 
 	difficulty_type Currency::nextDifficultyV2(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const {
